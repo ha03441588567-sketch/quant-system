@@ -18,9 +18,11 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run executor
+      - name: Train and run
         env:
-          EXCHANGE_API_KEY: ${{ secrets.EXCHANGE_API_KEY }}
+          EXCHANGE_API_KEY: ${{  }}
           EXCHANGE_API_SECRET: ${{ secrets.EXCHANGE_API_SECRET }}
           DRY_RUN: "true"
-        run: python github_executor.py
+        run: |
+          python train_and_save.py
+          python github_executor.py
